@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="style.css" rel="stylesheet"/>
+</head>
+<body>
+    <div id="navbar">
+        <a href="#default" id="logo">Our Menu</a>
+        <div id="navbar-right">
+          <a  href="#appetizers">Appetizers</a>
+          <a href="#desserts">Desserts</a>
+          <a href="#dishs">Dishs</a>
+          <a href="#salads">Salads</a>
+        </div>
+      </div>
+    <!-- <div class="row">
+        <div class="col-1"></div>
+            <div class="col-10">
+                <div id="navbar" class="sticky">
+                    <a href="#appetizers"> Appetizers</a>
+                    <a href="#desserts"> Desserts</a>
+                    <a href="#dishs"> Main Dishs</a>
+                    <a href="#salads">Salads</a>
+                </div>
+            </div>
+            <div class="col-1"></div>
+        </div>
+                 -->
+    <div class="menu" >
+        <!-- <div class="row" class="sticky">
+            <h1>*************** OUR MENU *****************</h1>
+        </div>  -->
+
+            <div class="row">
+                <div class="col-1" >
+             
+                 <!-- <div class="vertical-menu">
+                    <a href="#" class="active">MENU TYPES</a>
+                    <a href="#appetizers">1. Appetizers</a>
+                    <a href="#desserts">2. Desserts</a>
+                    <a href="#dishs">3. Main Dishs</a>
+                    <a href="#salads">4. Salads</a>
+                  </div> -->
+                 
+                </div>
+                <div class="col-10">
+                   
+                    <section id="appetizers">
+                        <p class="section-title">APPETZERS</p>
+                        <div class="menu-item" id="0">
+                        
+                            <img class="item-img" src="./image/burger.png"/>
+                        
+                            <div class="item-detail">
+                                <p class="title">Burger</p>
+                                <p>This is a waste of money</p>
+                                <p class="price">Rs. 340</p>
+                            </div>
+            
+                            <div class="item-action">
+                                <div class="qty-input-group">
+                                    <button class="qty-btn" id="burger_plus">+</button>
+                                    <input class="qty" type="number" disabled value="1" id="burger_qty"/>
+                                    <button class="qty-btn" id="burger_minus">-</button>
+                                </div>
+                                <button class="btn-add">Add</button>
+                            </div>
+                            
+                        </div>
+                    </section>
+
+                    
+                    <section id="desserts">
+                        <p class="section-title">DESSSERTS</p>   
+                    </section>
+
+                    <section id="dishs">
+                        <p class="section-title">Dish</p>  
+                    </section>
+
+                    <section id="salads">
+                        <p class="section-title">SALADS</p>  
+                    </section>
+                </div>
+                <div class="col-1"></div>
+            </div>
+        </div>   
+</body>
+</html>
+
+<script>
+
+    var MENU = {
+        "appetizers" : [
+            {"id":1,"name":"Vegitable Soup","price":150,"description":"Vegetable soup is a simple soup prepared using vegetables","img":"soup2.jpg"},
+            {"id":2,"name":"Pav Bhaji","price":250,"description":"Pav Bhaji is a traditional Indian dish","img":"pav-bhaji.jpg"},
+            {"id":3,"name":"Sandwich","price":200,"description":"A slice of bread with a filling in the middle","img":"sanwich.jpg"},
+            {"id":4,"name":"Pakora","price":300,"description":"Pakora is an Indian dish.","img":"pakode.jpg"},
+        ],
+        "desserts":[
+            {"id":10,"name":"Rasmalai","price":342,"description":"Rasa-Malai is a sweet from the Indian subcontinent.","img":"Rasmalai.jpg"},
+            {"id":11,"name":"Carrot Halwa","price":342,"description":"Gajar Halwa is a traditional Indian dessert ","img":"CarrotHalwa.jpg"},
+            {"id":12,"name":"Kheer","price":342,"description":"Kheer is a type of sweet made by cooking rice in milk.","img":"Kheer.jpg"},
+            {"id":13,"name":"Gulab jamun","price":342,"description":"Gulab Jamun is a type of dish made from flour, khoya and sugar.","img":"gulab-jamun.jpg"},
+        ],
+        "dishs":[
+            {"id":10,"name":"Dal Makhni","price":300,"description":"One of the most popular dal of Indian Cuisine, known for its creamy texture and scrumptious taste.","img":"dal.jpg"},
+            {"id":11,"name":"Stuffed Paratha","price":170,"description":"Stuffed Moong Daal Paratha- Spicy Indian flat bread filled with cooked yellow lentil and spices. ","img":"paratha.jpg"},
+            {"id":12,"name":"Chole Bature","price":342,"description":"Chole Bhature is a food dish popular in the northern regions of the Indian subcontinent.","img":"bhature.jpg"},
+            {"id":13,"name":"Dhokla","price":342,"description":"Dhokla is a traditional Gujarati dish . It is mainly made of rice and gram grains.","img":"dhokla.jpg"},
+        ],
+        "salads":[
+            {"id":10,"name":"Green Salad","price":100,"description":"Put together a fresh green salad for a light summer lunch or side.","img":"green-salad.jpg"},
+            {"id":11,"name":"Vegetable Salad","price":120,"description":"Mouthwatering quinoa salad made with fresh vegetables","img":"vegetable-salad.jpg"},
+            {"id":12,"name":"Mixed Salad","price":100,"description":"Make this spring mix salad recipe and get all of your fruits and veggies in in one meal.","img":"mix-salad.jpg"},
+            {"id":13,"name":"Fruit Salad","price":342,"description":"This easy fruit salad is fresh and sweet, with bright notes from the lime juice that also helps keep.","img":"fruit-salad.jpg"},
+        ],
+    }
+
+    var Appetizers = document.getElementById("appetizers")
+    var Desserts = document.getElementById("desserts")
+    var Main_dishs = document.getElementById("dishs")
+    var Main_salad = document.getElementById("salads")
+
+    function createMenuItem(item)
+    {
+        var menu_item = document.createElement('div')
+        menu_item.setAttribute("class","menu-item")
+        menu_item.setAttribute("id","item_"+item.id)
+
+        /// ------------------ image ----------------
+        var item_img = document.createElement('img')
+        item_img.setAttribute("class","item-img")
+        item_img.setAttribute("src","./image/"+item.img)
+       
+        
+
+        menu_item.appendChild(item_img)
+
+        ///----------------------------------------
+
+        /// ----------------- Detail ----------------
+        var item_detail = document.createElement('div')
+        item_detail.setAttribute("class","item-detail")
+
+        var item_title = document.createElement('p')
+        item_title.setAttribute("class","title")
+        item_title.innerHTML = item.name
+        item_detail.appendChild(item_title)
+
+        var item_desc = document.createElement('p')
+        item_desc.innerHTML=item.description
+        item_detail.appendChild(item_desc)
+
+        var item_price = document.createElement('p')
+        item_price.setAttribute("class","price")
+        item_price.innerHTML= "Rs. "+ item.price
+        item_detail.appendChild(item_price)
+
+        menu_item.appendChild(item_detail)
+
+        // ---------------Action----------------
+        var item_action = document.createElement('div')
+        item_action.setAttribute("class","item-action")
+        
+        var input_group = document.createElement('div')
+        input_group.setAttribute("class","qty-input-group")
+
+        var item_plus_btn = document.createElement('button')
+        item_plus_btn.setAttribute("class","qty-btn")
+        item_plus_btn.setAttribute("id","plus_"+item.id)
+        item_plus_btn.innerHTML = '+'
+        input_group.appendChild(item_plus_btn)
+
+        var item_input = document.createElement('input')
+        item_input.setAttribute("class","qty")
+        item_input.setAttribute("type","number")
+        item_input.setAttribute("value","1")
+        item_input.setAttribute("id","qty_"+item.id)
+        item_input.disabled = true
+        input_group.appendChild(item_input) 
+
+        var item_minus_btn = document.createElement('button')
+        item_minus_btn.setAttribute("class","qty-btn")
+        item_minus_btn.setAttribute("id","minus_"+item.id)
+        item_minus_btn.innerHTML = '-'
+        input_group.appendChild(item_minus_btn)
+
+        item_action.appendChild(input_group)
+
+        var item_add = document.createElement("button")
+        item_add.setAttribute("class","btn-add")
+        item_add.setAttribute("id","add_"+item.id)
+        item_add.innerHTML='ADD'
+        item_action.appendChild(item_add)
+
+        menu_item.appendChild(item_action)
+
+        
+        /// ----------------- Detail ----------------
+
+        console.log(menu_item)
+        return menu_item
+    }
+
+
+    function updateMenu()
+    {
+        
+        MENU["appetizers"].forEach(appetizer => {
+            Appetizers.appendChild(createMenuItem(appetizer))
+        });
+
+        MENU["desserts"].forEach(dessert => {
+           Desserts.appendChild(createMenuItem(dessert))
+        });
+
+        MENU["dishs"].forEach(dish => {
+            Main_dishs.appendChild(createMenuItem(dish))
+        });
+
+        MENU["salads"].forEach(salad => {
+            Main_salad.appendChild(createMenuItem(salad))
+        });
+    }
+
+    updateMenu()
+
+
+
+</script>
